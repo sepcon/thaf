@@ -1,0 +1,17 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: setup
+      run: mkdir -p build
+    - name: cmake 
+      run: cd build; cmake .. -DMAF_ENABLE_TEST=ON
+    - name: build
+      run: cmake --build ./build
